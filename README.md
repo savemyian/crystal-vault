@@ -4,6 +4,8 @@
 
 It opens the server's `save.db` entirely in the browser, lets you edit inventory, units, missions, mail, Item World enhancements and more, then writes a clean, self-contained database back to the device.
 
+**Run it now:** [ee8d32330ee643e0ae0efce3f145115d.prod.enter.pro](https://ee8d32330ee643e0ae0efce3f145115d.prod.enter.pro) — open it in a desktop browser (Chrome, Edge or Firefox) and drag in `save.zip` or `save.db`. Nothing to install.
+
 > **Unofficial fan project.** Not affiliated with Square Enix, gumi, or the lapis server authors. FINAL FANTASY BRAVE EXVIUS and its assets belong to Square Enix. Use it only with your own save, and keep a backup.
 
 ---
@@ -270,6 +272,10 @@ FINAL FANTASY BRAVE EXVIUS game data and assets remain the property of Square En
 **Description**
 
 > Browser-based save editor and Windows pull/push toolkit for FFBE JP on a lapis private server.
+
+**Website**
+
+> https://ee8d32330ee643e0ae0efce3f145115d.prod.enter.pro
 
 **Topics**
 
