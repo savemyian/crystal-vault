@@ -7,8 +7,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:standalone": "vite --config vite.config.standalone.ts",
     "build": "NODE_ENV=development vite build --mode development",
     "build:prod": "vite build",
+    "build:standalone": "vite build --config vite.config.standalone.ts",
+    "preview:standalone": "vite preview --config vite.config.standalone.ts",
     "check": "pnpm lint && pnpm exec tsc --noEmit",
     "lint": "eslint .",
     "preview": "vite preview",

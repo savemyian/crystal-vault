@@ -56,7 +56,7 @@ Export the save (`Download save` or `Save to folder`), then **drag `save.db` ont
 
 You can also double-click the tool and choose **2**; it looks for the newest `save.db` in `ffbe-save` or `Downloads` and asks before writing.
 
-### Running locally
+### Running locally inside Enter
 
 ```bash
 pnpm install
@@ -66,11 +66,27 @@ pnpm lint
 pnpm exec tsc --noEmit
 ```
 
-Any static host can serve the production build. The Save Tools file is a normal static asset under `public/tools/`.
+Two dependencies are published on Enter's private package registry, configured in `.npmrc`: `@enter-pro/analytics-sdk` and `vite-plugin-enter-dev`. They power the hosted preview and analytics, so a plain `pnpm install` fails on them without an Enter account.
+
+### Running locally outside Enter (plain Vite)
+
+```bash
+# 1. Remove the Enter-only dependencies
+#    - delete the "@enter:" line in .npmrc (or delete the file)
+#    - delete the "@enter-pro/analytics-sdk" and "vite-plugin-enter-dev" lines in package.json
+
+pnpm install
+pnpm dev:standalone      # dev server on http://localhost:8080
+pnpm build:standalone    # static build in dist/
+```
+
+`vite.config.standalone.ts` builds the editor without Enter's Vite plugin and aliases the analytics SDK to [`standalone/analytics-stub.ts`](standalone/analytics-stub.ts), a no-op shim. Everything works except usage tracking. The default `vite.config.ts` is left untouched for Enter's own preview and build.
+
+Any static host can serve the production build. The Save Tools files are normal static assets under `public/tools/`.
 
 ### Fork and customize
 
-Fork the repository and run `pnpm install && pnpm dev`. The save-format logic lives in `src/lib/ffbe`, the editor UI in `src/components/editor`, and the shipped data in `public/ffbe`. The MIT license allows modifications and redistribution; keep the attribution and the game-data notice.
+Fork the repository, follow the standalone steps above, then run `pnpm dev:standalone`. The save-format logic lives in `src/lib/ffbe`, the editor UI in `src/components/editor`, and the shipped data in `public/ffbe`. The MIT license allows modifications and redistribution; keep the attribution and the game-data notice.
 
 ---
 
